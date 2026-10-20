@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="fi" data-theme="auto">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f4f2ed" />
+    <title>Valo Studio | Selkeä suunta</title>
+    <meta
+      name="description"
+      content="Valo Studio suunnittelee digitaalisia palveluja, joissa selkeys tuntuu joka yksityiskohdassa."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script>
+      (() => {
+        let theme = "auto";
+        try {
+          const storedTheme = localStorage.getItem("valo-theme");
+          if (["auto", "light", "dark"].includes(storedTheme)) {
+            theme = storedTheme;
+          }
+        } catch {
+          // The page still works when storage is unavailable.
+        }
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="wordmark" href="#alku" aria-label="Valo Studio, etusivu">
+          <span class="wordmark-mark" aria-hidden="true">v.</span>
+          <span>VALO STUDIO</span>
+        </a>
+        <input
+          class="menu-checkbox"
+          id="menu-toggle"
+          type="checkbox"
+          aria-label="Valikko"
+          aria-controls="main-navigation"
+        />
+        <label class="nav-toggle" for="menu-toggle">
+            <i class="fa-solid fa-bars" aria-hidden="true"></i>
+            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </label>
+        <div class="nav-panel" id="main-navigation">
+          <nav class="nav-links" aria-label="Päänavigaatio">
+            <a href="#alku" aria-current="page">Etusivu</a>
+            <a href="#palvelut">Palvelut</a>
+            <a href="#tyot">Työt</a>
+            <a href="#studio">Studio</a>
+          </nav>
+          <div class="theme-control" role="group" aria-label="Väriteema">
+            <button type="button" data-theme-choice="auto" aria-pressed="true">
+              Järjestelmä
+            </button>
+            <button type="button" data-theme-choice="light" aria-pressed="false">
+              Vaalea
+            </button>
+            <button type="button" data-theme-choice="dark" aria-pressed="false">
+              Tumma
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="alku" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Digitaalinen suunnittelustudio</p>
+          <h1 id="hero-title">Hyvä idea ansaitsee <em>selkeän suunnan.</em></h1>
+          <p>
+            Suunnittelemme digitaalisia palveluja, jotka tuntuvat luontevilta
+            käyttää ja kestävät katseen myös vuosien päästä.
+          </p>
+          <a class="button-link" href="#palvelut">
+            Tutustu palveluihin <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+        <figure class="hero-visual">
+          <img
+            src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1500&q=85"
+            alt="Valoisa, kasveilla viimeistelty työtila ja pitkä yhteinen työpöytä"
+            fetchpriority="high"
+          />
+          <figcaption class="image-note">
+            <span>Ajatus tavastamme</span>
+            <strong>Tilaa keskittyä olennaiseen.</strong>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="section-band" id="palvelut" aria-labelledby="services-title">
+        <div class="section-inner">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Mitä teemme</p>
+              <h2 id="services-title">Hyvä kokemus syntyy pienistä päätöksistä.</h2>
+            </div>
+            <p>
+              Yhdistämme tutkimuksen, muotoilun ja teknologian yhdeksi selkeäksi
+              kokonaisuudeksi.
+            </p>
+          </div>
+          <div class="service-list">
+            <article class="service">
+              <span class="service-index">01 / Suunta</span>
+              <h3>Strategia ja sisältö</h3>
+              <p>Löydämme olennaisen ja teemme siitä ymmärrettävän suunnan.</p>
+            </article>
+            <article class="service">
+              <span class="service-index">02 / Muoto</span>
+              <h3>Brändi ja käyttöliittymä</h3>
+              <p>Rakennamme tunnistettavia ilmeitä ja vaivattomia käyttöpolkuja.</p>
+            </article>
+            <article class="service">
+              <span class="service-index">03 / Toteutus</span>
+              <h3>Verkkosivut ja kehitys</h3>
+              <p>Toteutamme nopeat, saavutettavat ja eri ruuduilla toimivat sivut.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="work-section" id="tyot" aria-labelledby="work-title">
+        <div class="section-inner">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Valikoituja töitä</p>
+              <h2 id="work-title">Selkeyttä, jolla on oma luonteensa.</h2>
+            </div>
+            <p>
+              Jokainen projekti alkaa kuuntelemisesta ja päätyy johonkin
+              konkreettiseen.
+            </p>
+          </div>
+          <div class="work-grid">
+            <figure class="work-item">
+              <img
+                src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80"
+                alt="Rauhallinen ja valoisa toimistotila suurten ikkunoiden äärellä"
+                loading="lazy"
+              />
+              <figcaption class="work-caption">
+                <div>
+                  <h3>Studio Aava</h3>
+                  <p>Brändi · Verkkopalvelu</p>
+                </div>
+                <span class="work-year">2025</span>
+              </figcaption>
+            </figure>
+            <figure class="work-item">
+              <img
+                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80"
+                alt="Moderni rakennus kohoaa selkeää taivasta vasten"
+                loading="lazy"
+              />
+              <figcaption class="work-caption">
+                <div>
+                  <h3>Northline</h3>
+                  <p>Strategia · Digitaalinen tuote</p>
+                </div>
+                <span class="work-year">2024</span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact-band" id="studio" aria-labelledby="contact-title">
+        <div class="contact-inner">
+          <div>
+            <p class="eyebrow">Valo Studio · Helsinki</p>
+            <h2 id="contact-title">Tehdään seuraavasta ideasta totta.</h2>
+          </div>
+          <a class="button-link" href="mailto:hei@valostudio.fi" id="yhteys">
+            Ota yhteyttä <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <a class="wordmark" href="#alku">
+        <span class="wordmark-mark" aria-hidden="true">v.</span>
+        <span>VALO STUDIO</span>
+      </a>
+      <p>© 2026 Valo Studio. Ajatuksella tehty Helsingissä.</p>
+    </footer>
+
+    <script>
+      const themeButtons = document.querySelectorAll("[data-theme-choice]");
+
+      themeButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const theme = button.dataset.themeChoice;
+          document.documentElement.dataset.theme = theme;
+          themeButtons.forEach((choice) => {
+            choice.setAttribute("aria-pressed", String(choice === button));
+          });
+          try {
+            localStorage.setItem("valo-theme", theme);
+          } catch {
+            // Theme switching still works when storage is unavailable.
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
