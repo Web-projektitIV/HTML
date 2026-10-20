@@ -1,1 +1,1 @@
-# Laadi html-sivumalli, ja sille css-muotoilu, jossa käytetään css-muuttujia, ja jossa on niihin perustuvat erilliset päivä- ja yövärit.
+# Kloonaa HTML-repositorio https://github.com/Web-projektitIV/HTML.git, ja lisää Lightdarknav.html-sivustoon uusi sivu, jossa on matala sisältö, esim. pelkkä h1-otsikko, ja muuta sivun tyylejä siten, että footer sijoittuu sivun loppuun tällä matalalla sivulla ja sisällön jälkeen alkuperäisillä sivuilla.  Tämä on ns. sticky footer. Koeta löytää mahdollisimman nykyaikainen ja lyhyt ratkaisu.
