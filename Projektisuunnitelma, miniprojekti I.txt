@@ -1,0 +1,42 @@
+PROJEKTISUUNNITELMA
+
+Aihe		
+
+Kesto		ma 16.11. - to 26.11.2026
+		Katselmointi to 26.11.2026	
+
+Työpari	ja 
+työnjako 		
+
+Tavoitteet	
+
+Fokus 		
+
+Rajaukset	
+
+Työkalut	Visual Studio Code
+		GitHub
+		HTML, CSS, Javascript, JSON-server	
+
+Riskit ja niiden eliminoiminen
+
+		Oman ohjelmointiosaamisen yliarvioiminen
+		- Suunnittelu, oikeiden työkalujen ja tuen valinta 
+
+		Tietokoneen hajoaminen
+		-  Varmuuskopiot päivittäin
+
+		Sairastuminen
+		-  Altistusten välttäminen
+		-  Riittävä yöuni, liikkuminen, ravinto, ihmissuhteet
+
+		Parityöskentelyn viestinnän vähäisyys ja sooloilu 
+		-  Sovitaan tapaamisista
+		-  Määritetään ajoissa ne asiat, joista pitää sopia, esim. muotoilu, vakioelementtien ulkoasu
+		-  Githubin käyttö niin, että kumpikin tietää menettelyt
+		-  Määritetään molemmille sama työmäärä
+
+		Muut riskit
+		-  Muiden riskien eliminointi
+
+

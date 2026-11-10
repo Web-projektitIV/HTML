@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="fi" data-theme="auto">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#f4f2ed" />
+		<title>Valo Studio | Kokeilu</title>
+		<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+		/>
+		<link rel="stylesheet" href="site.css" />
+		<link rel="stylesheet" href="tilauslomake.css" />
+		<script src="scripts.js"></script>
+	</head>
+	<body>
+		<header class="site-header">
+			<div class="header-inner">
+				<a class="wordmark" href="Lightdarknav.html#alku" aria-label="Valo Studio, etusivu">
+					<span class="wordmark-mark" aria-hidden="true">v.</span>
+					<span>VALO STUDIO</span>
+				</a>
+				<input
+					class="menu-checkbox"
+					id="menu-toggle"
+					type="checkbox"
+					aria-label="Valikko"
+					aria-controls="main-navigation"
+				/>
+				<label class="nav-toggle" for="menu-toggle">
+					<i class="fa-solid fa-bars" aria-hidden="true"></i>
+					<i class="fa-solid fa-xmark" aria-hidden="true"></i>
+				</label>
+				<div class="nav-panel" id="main-navigation">
+					<nav class="nav-links" aria-label="Päänavigaatio">
+						<a href="Lightdarknav.html#alku">Etusivu</a>
+						<a href="Lightdarknav.html#palvelut">Palvelut</a>
+						<a href="Lightdarknav.html#tyot">Työt</a>
+						<a href="Lightdarknav.html#studio">Studio</a>
+						<a href="kokeilu.html">Kokeilu</a>
+						<a href="shakkilauta.html">Shakkilauta</a>
+						<a href="tilauslomake.html" aria-current="page">Tilauslomake</a>
+					</nav>
+					<div class="theme-control" role="group" aria-label="Väriteema">
+						<button
+							type="button"
+							data-theme-choice="light"
+							aria-label="Vaalea teema"
+							title="Vaalea teema"
+							aria-pressed="false"
+						>
+							<i class="fa-solid fa-sun" aria-hidden="true"></i>
+						</button>
+						<button
+							type="button"
+							data-theme-choice="dark"
+							aria-label="Tumma teema"
+							title="Tumma teema"
+							aria-pressed="false"
+						>
+							<i class="fa-solid fa-moon" aria-hidden="true"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<main>
+			<section class="page-content">
+				<form autocomplete="on" novalidate onsubmit="return this.checkValidity()">
+				<fieldset>
+				<legend>Tilauslomake</legend>
+				<div class="form-fields">
+					<div class="input-group">
+					<label for="nimi">Nimi</label>
+					<input type="text" id="nimi" name="nimi" class="form-control" title="Nimi" pattern="[A-ZÅÄÖa-zåäö]{2,25}" required/>
+					<div class="invalid-feedback">Täytä kenttä oikein</div>
+					</div>
+
+					<div class="input-group">
+					<label for="nimi">Kunta</label>
+					<input list="kunta-lista" type="text" id="kaupunki" name="kaupunki" class="form-control" title="Kaupunki" pattern="[A-ZÅÄÖa-zåäö\-\s]{2,50}" required/>
+					<div class="invalid-feedback">Täytä kenttä oikein</div>
+					<datalist id="kunta-lista">
+						<option value="Helsinki"></option>
+						<option value="Espoo"></option>
+						<option value="Vantaa"></option>
+						<option value="Kauniainen"></option>
+						<option value="Turku"></option>
+						<option value="Tampere"></option>
+					</datalist>
+					</div>
+
+
+					<div class="input-group">
+					<label for="viesti">Viesti</label>	
+					<textarea id="viesti" name="viesti" class="form-control" title="Viesti" rows="5" required></textarea>
+					<div class="invalid-feedback">Täytä kenttä</div>
+					</div>
+
+					<div class="button-group">
+					<button type="submit">Lähetä tilaus</button>
+					</div>
+				</div>
+				</fieldset>
+				</form>
+			</section>
+		</main>
+
+		<footer>
+			<a class="wordmark" href="Lightdarknav.html#alku">
+				<span class="wordmark-mark" aria-hidden="true">v.</span>
+				<span>VALO STUDIO</span>
+			</a>
+			<p>© 2026 Valo Studio. Ajatuksella tehty Helsingissä.</p>
+		</footer>
+	</body>
+</html>

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Viope – luku 5: Oliot ja taulukot</title>
+  <link rel="stylesheet" href="viope.css">
+  <script defer src="viope.js"></script>
+</head>
+<body>
+  <h1>Retkiseuranta – oliot ja taulukot</h1>
+  <p>Metropolian JavaScript-perusteet, luku 5: objektit ja taulukot. Lisää retkiä, tarkastele niiden nopeuksia ja laske yhteenveto.</p>
+
+  <form id="lomakeLisaa">
+    <fieldset>
+      <legend>Lisää retki</legend>
+      <div class="fields">
+        <label>Nimi <input name="nimi" required maxlength="50" placeholder="Esim. Pyöräretki"></label>
+        <label>Matka (km) <input name="matka" type="number" min="0.1" step="any" required></label>
+        <label>Aika (h) <input name="aika" type="number" min="0.1" step="any" required></label>
+        <button>Lisää</button>
+      </div>
+    </fieldset>
+  </form>
+
+  <form id="lomakeMuuta" hidden>
+      <fieldset>
+      <legend>Muuta retkeä</legend>
+      <div class="fields">
+        <label>Nimi <input name="nimi" required maxlength="50" placeholder="Esim. Pyöräretki"></label>
+        <label>Matka (km) <input name="matka" type="number" min="0.1" step="any" required></label>
+        <label>Aika (h) <input name="aika" type="number" min="0.1" step="any" required></label>
+        <button>Muuta</button>
+      </div>
+    </fieldset>
+  </form>
+
+  <div class="fields">
+    <button id="lajittele" type="button">Järjestä nopeuden mukaan</button>
+    <button id="kopioi" type="button">Kopioi viimeinen retki (spread)</button>
+    <button id="palauta" type="button">Palauta esimerkit</button>
+  </div>
+
+  <table>
+    <thead><tr><th>Retki</th><th>Matka (km)</th><th>Aika (h)</th><th>Nopeus (km/h)</th><th></th><th></th></tr></thead>
+    <tbody id="rivit"></tbody>
+  </table>
+  <p id="yhteenveto" aria-live="polite"></p>
+
+  <details>
+    <summary>Mitä JavaScript-käsitteitä esimerkissä käytetään?</summary>
+    <ul>
+      <li><code>{ nimi: "...", matka: 10 }</code> on olioliteraali (5.1).</li>
+      <li><code>retki.nimi</code> ja <code>retki["nimi"]</code> ovat ominaisuuden lukutapoja (5.1).</li>
+      <li><code>retki.nopeus()</code> on metodi, jossa <code>this</code> viittaa olioon (5.1).</li>
+      <li><code>new Retki(...)</code> luo olion konstruktoriluokasta (5.1).</li>
+      <li><code>retket</code> on olioita sisältävä taulukko (5.2).</li>
+      <li><code>map</code>, <code>filter</code>, <code>reduce</code> ja <code>sort</code> käsittelevät taulukkoa.</li>
+      <li><code>retki =&gt; ...</code> on nuolifunktio.</li>
+      <li><code>[...retket]</code> ja <code>{...retki}</code> käyttävät spread-operaattoria.</li>
+      <li><code>function summa(...luvut)</code> käyttää rest-parametria.</li>
+    </ul>
+    <p class="note">Nuolifunktio ei saa omaa <code>this</code>-sidontaa, joten olion <code>nopeus()</code>-metodi on kirjoitettu tavallisena metodina.</p>
+  </details>
+</body>
+</html>

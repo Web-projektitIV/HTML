@@ -1,0 +1,101 @@
+.board {
+  --size: min(50px, 11vw);
+  position: relative;
+  display: grid;
+  grid-template-rows: repeat(8, var(--size));
+  width: calc(8 * var(--size));
+  margin: 24px auto 42px;
+  counter-reset: rank 9;
+}
+
+.board > div:not(.file-labels) {
+  position: relative;
+  background: #f0d9b5;
+  counter-increment: rank -1;
+}
+
+.board > div:not(.file-labels)::before {
+  content: "";
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  background: #b58863;
+  box-shadow:
+    calc(2 * var(--size)) 0 #b58863,
+    calc(4 * var(--size)) 0 #b58863,
+    calc(6 * var(--size)) 0 #b58863;
+}
+
+.board > div:not(.file-labels)::after {
+  content: counter(rank);
+  position: absolute;
+  top: 50%;
+  left: -16px;
+  transform: translateY(-50%);
+  color: var(--ink);
+  /*font-size: 12px;*/
+  font-weight: 600;
+}
+
+.board > div:not(.file-labels):nth-child(odd)::before {
+  left: var(--size);
+}
+
+.file-labels {
+  position: absolute;
+  right: 0;
+  bottom: -30px;
+  left: 0;
+  display: grid;
+  grid-template-columns: repeat(8, var(--size));
+  color: var(--ink);
+  /*font-size: 12px;*/
+  font-weight: 600;
+  text-align: center;
+}
+
+
+.board-II {
+  --size: min(50px, 11vw);
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(8, var(--size));
+  width: calc(8 * var(--size));
+  height: calc(8 * var(--size));
+  margin: 24px auto 42px;
+  counter-reset: rank 9;
+}
+
+.board-II > div:not(.file-labels) {
+  position: relative;
+  background: #f0d9b5;
+}
+
+.board-II > div:not(.file-labels):nth-child(8n + 1) {
+  counter-increment: rank -1;
+}
+
+.board-II > div:not(.file-labels):nth-child(8n + 1)::before {
+  content: counter(rank);
+  position: absolute;
+  top: 50%;
+  left: -16px;
+  transform: translateY(-50%);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.board-II > div:not(.file-labels):is(
+  :nth-child(16n+2),
+  :nth-child(16n+4),
+  :nth-child(16n+6),
+  :nth-child(16n+8),
+  :nth-child(16n+9),
+  :nth-child(16n+11),
+  :nth-child(16n+13),
+  :nth-child(16n+15)
+) {
+  background: #555;
+  }
+
+

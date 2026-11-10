@@ -1,0 +1,24 @@
+Web-ohjelmoinnin aloitustehtävien suorittaminen
+
+1. Asenna XAMPP Yritysportaalista
+2. Luo uusi kansio XAMPP:n htdocs-kansioon, esim. HTML-sivustot
+3. Luo uusi kansio HTML-aloituskansion sisään, esim. aloitus
+4. Avaa Visual Studio Code, ja siinä kansio aloitus
+5. Kopio leikepöydälle GitHubin HTML-repositorion osoite eli: https://github.com/Web-projektitIV/HTML.git
+   (osoite löytyy myös Moodlen tehtävässä Sticky Footer)  
+6. Kloonaa Visual Studio Codessa yllä mainittu repository napsauttamalla versionhallintakuvaketta ja
+   liittämällä kloonattavan repositorion osoite näkymän ylälaidan kenttään
+7. Käynnistä XAMPP:n Apache-Web-palvelin
+8. Avaa selaimessa http://localhost/HTML-sivustot/aloitus/lightdarknav.html
+7. Tämän jälkeen:
+
+	* Visual Studiossa on tehtävien tekemiseen ja tarvittava HTML-, CSS- ja Javascript-mallikoodi
+        * Tietokoneessa on käynnissä Apache-kehityspalvelin
+	* Selaimessa näkyy mallisivusto
+
+8. Tee tehtävä Sticky Footer, siinä:
+        1) Poimitaan etusivusta sen rakenne mallisivuksi
+	2) Lisätään tämä sivu sivuston navigointipalkkiin
+	3) Asemoidaan mallisivun footer-elementti oikein 
+   	4) Tämä uusi sivu tallennetaan mallisivuksi uusien tehtävien ratkaisuille ja lisättäväksi samaan sivustoon    
+    

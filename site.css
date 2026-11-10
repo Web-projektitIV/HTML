@@ -44,9 +44,24 @@ body {
   transition: background-color 180ms ease, color 180ms ease;
 }
 
-button,
-a {
+main {
+  margin-top: 20px;
+}
+
+input,textarea { 
+font-size: 16px;
+padding: 4px;
+font-family: "Roboto", Arial, sans-serif;
+}
+
+button {
+  padding: 4px 12px;
+  border: 1px solid var(--line);
+}
+
+button,a {
   font: inherit;
+  font-size: 16px;
 }
 
 a {
@@ -657,6 +672,32 @@ footer p {
     flex-direction: row;
     padding: 22px 32px;
   }
+}
+
+dialog {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+}
+
+dialog form {
+    display: flex;  
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+}
+
+dialog form button {
+   align-self: flex-end;
+   padding: 4px 18px;
+   margin-right: 10px;
+}
+
+.dialog-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  border: 1px solid var(--line);
 }
 
 @media (prefers-reduced-motion: reduce) {

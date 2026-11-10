@@ -1,0 +1,36 @@
+Web-ohjelmoinnin aloitustehtävien suorittaminen
+
+Vaatimuksia: Visual Studio Code ja Git -sovellukset asennettuna Omnian Yritysportaalista.
+
+1. Asenna XAMPP Omnian Yritysportaalista
+2. Luo uusi kansio XAMPP:n htdocs-kansioon, esim. HTML-sivustot
+3. Luo uusi kansio HTML-sivustot-kansion sisään, esim. aloitus
+4. Avaa Visual Studio Code ja siinä kansio aloitus
+5. Kopioi leikepöydälle GitHubin HTML-repositorion osoite eli: https://github.com/Web-projektitIV/HTML.git
+6. Kloonaa Visual Studio Codessa yllä mainittu repositorio napsauttamalla versionhallintakuvaketta ja
+   liittämällä kloonattavan repositorion osoite näkymän ylälaidan kenttään
+7. Käynnistä XAMPP:n Apache-Web-palvelin
+8. Avaa selaimessa http://localhost/HTML-sivustot/aloitus/lightdarknav.html
+   Tämän jälkeen:
+
+	* Visual Studiossa on tehtävien tekemiseen tarvittava HTML-, CSS- ja Javascript-mallikoodi
+        * Tietokoneessa on käynnissä Apache-kehityspalvelin
+	* Selaimessa näkyy mallisivusto lightdarknav.html
+
+   Sivu lightdarknav.html sisältää mallin seuraavien periaatteiden toteuttamiseen:
+
+	a) Semanttinen ja modulaarinen sivurakenne
+	b) Mobile first-muotoilu
+	c) Responsiivinen navigointipalkki - ilman Javascriptia
+	d) Moderni päivä-/yönäkymä ratkaisu:
+	   - muotoilu CSS-muuttujia ja light-dark-funktiota soveltaen,
+	   - valinta navigointipalkissa kuvakkein
+	   - minimi-Javascript-koodi valinnan tallentamiseen localStorageen
+
+9. Tee tehtävä Sticky Footer, siinä:
+
+        1) Etusivusta poimitaan sen rakenne mallisivuksi, esim. kokeilu.html
+	2) Tämä kokeilu.html lisätään sivuston navigointipalkkiin
+	3) Kokeilu.html-sivun footer-elementti asemoidaan oikein lyhyen sivun / pitkän sisällön loppuun 
+   	4) Tämä uusi sivu tallennetaan mallisivuksi uusien tehtävien ratkaisujen lisäämiseksi samaan sivustoon    
+    

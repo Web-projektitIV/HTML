@@ -1,0 +1,356 @@
+CSS-selityksiä Sticky Footer-tehtävän site.css-tiedostoon
+
+Tämä ohje perustuu tiedostoon site.css. Siinä selitetään tiedoston käyttämät CSS-valitsimet, ominaisuudet ja rakenteelliset ratkaisut. Esimerkit ovat tiedostosta tai sen määritysten tiivistelmiä.
+
+## 1. CSS-valitsimet
+
+CSS-valitsin määrittää, mihin HTML-elementteihin tyylit vaikuttavat.
+
+- :root: Dokumentin juurielementti, yleensä html (Esimerkki: Yhteiset värit ja fontti)
+- body, h1: HTML-elementtivalitsin (Esimerkki: Sivun tausta, otsikon muotoilu)
+- .hero: Luokkavalitsin (Esimerkki: Pääosion asettelu)
+- .hero-visual img: Jälkeläisvalitsin: kuva hero-visual-elementin sisällä (Esimerkki: Kuvan koko)
+- .hero-copy > p: Suora lapsielementti (Esimerkki: Hero-osion kappaleet)
+- .service + .service: Välittömästi toista samanlaista elementtiä seuraava sisar (Esimerkki: Palvelujen välinen reunus)
+- .menu-checkbox:checked ~ .nav-panel: Valittua valintaruutua seuraavat sisarelementit (Esimerkki: Mobiilivalikon avaaminen)
+- .menu-checkbox:checked + .nav-toggle: Välittömästi seuraava sisarelementti (Esimerkki: Valikkokuvakkeen vaihtaminen)
+- a:hover: Osoittimen alla oleva linkki (Esimerkki: Linkin korostus)
+- a:focus-visible: Näppäimistöfokuksen näkyvä tila (Esimerkki: Tarkennuskehys)
+- :not(.eyebrow): Rajaa valinnasta pois tietyn luokan (Esimerkki: Hero-osion tavalliset kappaleet)
+- ::before: Luo sisältöä elementin alkuun (Esimerkki: Koristeviiva otsakkeen edellä)
+- [aria-pressed="true"]: Attribuuttivalitsin (Esimerkki: Valitun teemavaihtoehdon ulkoasu)
+- [data-theme="dark"]: Attribuuttivalitsin (Esimerkki: Tumma teema)
+
+Useita valitsimia voidaan yhdistää pilkulla, jolloin sama sääntö koskee kaikkia niitä.
+
+
+## 2. Värit, teemat ja CSS-muuttujat
+
+### color-scheme
+
+Ilmoittaa selaimelle, tukeeko sivu vaaleaa tai tummaa värimaailmaa.
+
+    :root { color-scheme: light dark; }
+    html[data-theme="dark"] { color-scheme: dark; }
+    html[data-theme="light"] { color-scheme: light; }
+
+light dark sallii molemmat teemat. data-theme-attribuutin avulla voidaan pakottaa tietty teema.
+
+
+### CSS-muuttujat ja var()
+
+Kaksoisviivalla alkava nimi on mukautettu CSS-ominaisuus eli muuttuja. var() lukee sen arvon.
+
+    :root {
+      --paper: light-dark(#f4f2ed, #171c19);
+      --ink: light-dark(#19271f, #edf1e9);
+    }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+    }
+
+Tiedoston muuttujat:
+
+- --paper: Sivun tausta
+- --surface: Sisältöalueiden ja ohjainten tausta
+- --ink: Ensisijainen tekstiväri
+- --muted: Hillitty tekstiväri
+- --line: Reunaviivat
+- --accent: Korostusväri
+- --accent-hover: Korostusväri osoittimen alla
+- --green: Yhteydenottoalueen tausta
+- --header-bg: Yläpalkin läpikuultava tausta
+- --shadow: Varjostus
+
+### light-dark()
+
+
+Valitsee ensimmäisen arvon vaaleassa ja toisen tummassa teemassa. Vaatii soveltuvan color-scheme-määrityksen.
+
+    --surface: light-dark(#fffefa, #222a24);
+
+
+### rgb()
+
+Määrittelee värin. Vinoviivan jälkeinen prosentti ilmaisee läpinäkyvyyden vastakohdan eli peittävyyden.
+
+    background: rgb(244 242 237 / 92%);
+
+
+## 3. Koot ja mittayksiköt
+
+- width: Elementin leveys (Esimerkki: width: 100%)
+- height: Elementin korkeus (Esimerkki: height: 36px)
+- min-width: Pienin sallittu leveys (Esimerkki: min-width: 320px)
+- max-width: Suurin sallittu leveys (Esimerkki: max-width: 1320px)
+- min-height: Pienin sallittu korkeus (Esimerkki: min-height: 68px)
+- aspect-ratio: Leveyden ja korkeuden suhde (Esimerkki: aspect-ratio: 1.45)
+
+px on CSS-pikseli. % on suhteellinen arvo. fr jakaa Grid-asettelun käytettävissä olevaa tilaa. dvh tarkoittaa dynaamista näkymän korkeuden prosenttiyksikköä: 100dvh vastaa koko näkymän korkeutta.
+
+auto antaa selaimen laskea arvon tilanteen mukaan. Esimerkiksi margin: 0 auto keskittää leveydeltään rajatun lohkon vaakasuunnassa.
+
+
+## 4. Laatikkomalli ja välit
+
+### box-sizing
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+border-box tarkoittaa, että määritettyyn leveyteen ja korkeuteen sisältyvät sisältö, sisätila ja reunukset. Marginaalit jäävät mitan ulkopuolelle.
+
+- margin: Elementin ulkopuolinen väli
+- margin-top, margin-bottom: Ylä- ja alamarginaali
+- padding: Elementin sisäpuolinen väli
+- padding-top, padding-left: Sisätila tietyllä sivulla
+- gap: Flex- tai Grid-kohteiden väli
+- border: Reunaviiva
+- border-top, border-bottom, border-left: Tietyn reunan viiva
+- border-radius: Kulmien pyöristys
+
+Esimerkiksi padding: 10px 20px tarkoittaa 10 px ylös ja alas sekä 20 px vasemmalle ja oikealle. padding: 22px 0 24px tarkoittaa 22 px ylös, 0 sivuille ja 24 px alas.
+
+
+## 5. Näyttäminen ja asemointi
+
+### display
+
+- block: Elementin esittäminen lohkona
+- inline-block: Rivissä asettuva mutta mitoitettava elementti
+- flex: Joustava yksiulotteinen asettelu
+- inline-flex: Rivissä asettuva flex-säiliö
+- grid: Ruudukkoon perustuva asettelu
+- none: Elementti piilotetaan eikä se vie tilaa
+
+
+### position, top, right, bottom ja left
+
+    .site-header {
+      position: sticky;
+      top: 0;
+    }
+    .image-note {
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+    }
+
+
+sticky seuraa normaalia asettelua, kunnes annettu rajakohta saavutetaan. absolute sijoittaa elementin suhteessa lähimpään asemoituun esi-isään. Tiedostossa .hero-visual on position: relative, joten sen sisäinen .image-note voidaan sijoittaa kuvan päälle.
+
+Tiedostossa footer käyttää määrityksiä position: sticky ja top: 100dvh.
+
+### overflow
+
+overflow: hidden leikkaa elementin rajat ylittävän sisällön pois näkyvistä. Tiedostossa tätä käytetään muun muassa main-elementissä ja piilotetussa valintaruudussa.
+
+
+## 6. Flexbox
+
+Flexbox sopii elementtien järjestämiseen riville tai sarakkeeseen.
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+- flex-direction: Kohteiden suunta: row tai column
+- justify-content: Kohteiden sijoittelu pääakselilla
+- align-items: Kohteiden sijoittelu poikittaisakselilla
+- align-self: Yksittäisen kohteen oma poikittaisasettelu
+- flex-wrap: Saavatko kohteet siirtyä seuraavalle riville
+- gap: Kohteiden väli
+- flex: Kohteen kasvun, kutistumisen ja peruskoon lyhennysmerkintä
+
+Esimerkiksi justify-content: space-between sijoittaa ensimmäisen ja viimeisen kohteen ääripäihin ja jakaa vapaan tilan väleihin. flex: 0 0 100% tarkoittaa, ettei kohde kasva eikä kutistu ja sen peruskoko on 100 %.
+
+
+## 7. CSS Grid
+Grid sopii riveihin ja sarakkeisiin perustuvaan asetteluun.
+    .work-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    @media (min-width: 768px) {
+      .work-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+- grid-template-columns: Sarakkeiden määrä ja leveys
+- grid-template-rows: Rivien määrä ja korkeus, jos määritetty
+- place-items: align-items- ja justify-items-määritysten lyhennys
+- gap: Ruutujen väli
+
+
+1fr 1fr luo kaksi yhtä leveää saraketta. repeat(3, 1fr) luo kolme yhtä leveää saraketta. grid-template-columns: 0.92fr 1.08fr jakaa tilan kahteen erisuuruiseen osaan.
+place-items: center keskittää Grid-säiliön kohteet omiin ruutuihinsa vaaka- ja pystysuunnassa.
+
+
+## 8. Tekstin muotoilu
+
+- font-family: Fonttiperhe ja varafontit
+- font-size: Tekstin koko
+- font-weight: Tekstin paksuus, esim. 500, 600 tai 700
+- font: Useita fonttiin liittyviä asetuksia kattava lyhennysominaisuus
+- line-height: Rivikorkeus
+- letter-spacing: Kirjainten väli
+- text-decoration: Esimerkiksi linkin alleviivaus tai sen poisto
+- text-transform: Kirjainkoon muuntaminen, esim. uppercase
+- white-space: Välilyöntien ja rivinvaihtojen käsittely
+- text-wrap: Tekstin rivittymisen optimointi
+- color: Tekstin väri
+
+Tiedostossa white-space: nowrap estää sananmerkin rivittymisen. text-wrap: pretty pyrkii parantamaan usealle riville jakautuvan tekstin ulkoasua. font: inherit perii fonttiasetukset vanhemmalta elementiltä.
+
+Osa tiedoston fonttikoon ja rivikorkeuden määrityksistä on kommentoitu pois, joten ne eivät ole käytössä.
+
+
+## 9. Taustat, kuvat ja visuaaliset tehosteet
+
+- background: Taustan lyhennysominaisuus
+- background-color: Taustaväri
+- box-shadow: Laatikon varjostus
+- backdrop-filter: Elementin takana olevan alueen suodatus
+- object-fit: Kuvan sovittaminen elementin mittoihin
+- object-position: Kuvan kohdistuspiste
+- cursor: Hiiren osoittimen muoto
+- list-style: Listamerkin esitystapa
+
+    .hero-visual img {
+      width: 100%;
+      aspect-ratio: 1.15;
+      object-fit: cover;
+      object-position: center;
+    }
+
+object-fit: cover täyttää kuva-alueen säilyttäen kuvasuhteen. Osa kuvasta voi rajautua pois. backdrop-filter: blur(16px) sumentaa taustalla näkyvää sisältöä.
+
+
+## 10. Vuorovaikutus, näkyvyys ja saavutettavuus
+
+### Tilavalitsimet
+
+hover kuvaa osoittimen viemistä elementin päälle. focus-visible korostaa elementtiä, kun selaimen mielestä näkyvä tarkennusmerkki on tarpeen, tyypillisesti näppäimistöllä navigoitaessa. checked vastaa valitun valintaruudun tilaa.
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+
+outline piirtää tarkennuskehyksen ja outline-offset siirtää sitä elementistä ulospäin.
+
+
+### Valikon avaaminen ilman JavaScriptiä
+
+    .nav-panel { display: none; }
+    .menu-checkbox:checked ~ .nav-panel { display: flex; }
+
+
+Valintaruudun tila ohjaa sisarelementtinä olevan valikon näkyvyyttä. Tiedostossa vaihtuvat myös .fa-bars- ja .fa-xmark-kuvakkeiden näkyvyydet.
+
+Valintaruutu piilotetaan näkyvistä esimerkiksi clip-path: inset(50%)-määrityksellä. Tämä ei yksin poista elementtiä näppäimistökohdistuksesta.
+
+
+### aria-pressed ja aria-current
+
+
+Tiedostossa CSS käyttää attribuutteja [aria-pressed="true"] ja [aria-current="page"] muotoilussa. Attribuutit kuvaavat painikkeen valittua tilaa ja kulloistakin sivua myös avustaville teknologioille, kun ne on asetettu HTML:ään oikein.
+
+
+## 11. Animaatiot ja siirtymät
+
+    body {
+      transition: background-color 180ms ease, color 180ms ease;
+    }
+
+transition määrittää ominaisuuden muutoksen keston ja ajoituksen. 180ms tarkoittaa 180 millisekuntia ja ease pehmeää ajoituskäyrää. Tiedostossa käytetään myös linkkien värimuutoksiin 150 ms siirtymää.
+
+
+scroll-behavior: smooth pyrkii tekemään ohjelmallisesta ja ankkureihin perustuvasta vierityksestä sulavaa.
+
+
+## 12. Responsiivisuus ja mediakyselyt
+
+Tiedosto on rakennettu mobiililähtöisesti: perusmääritykset koskevat pieniä näyttöjä ja 768 pikselistä alkaen ulkoasua muutetaan.
+
+
+    @media (min-width: 768px) {
+      .service-list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .work-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+
+Leveämmällä näytöllä muun muassa navigaatio vaihtuu vaakasuuntaiseksi, hero-osio kahteen sarakkeeseen, palvelut kolmeen sarakkeeseen ja työt kahteen sarakkeeseen.
+
+
+### Käyttäjän liikeasetuksen huomioiminen
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+
+Tämä vähentää liikettä, jos käyttäjä on valinnut käyttöjärjestelmän asetuksista vähennetyn liikkeen. !important antaa määritykselle etusijan tavallisiin sääntöihin nähden, mutta ei kaikissa mahdollisissa CSS-etusijatilanteissa.
+
+
+## 13. Muita tiedostossa esiintyviä määrityksiä
+
+- Määritys: Selitys
+- content: "": Luo tyhjän pseudoelementin sisällön, jonka ulkoasua voi muotoilla
+- clip: rect(...): Vanhempi sisällön leikkaustapa
+- clip-path: inset(50%): Leikkaa elementin näkyvän alueen hyvin pieneksi tai kokonaan pois
+- overflow: hidden: Leikkaa rajan ylittävän sisällön
+- height: auto: Korkeus lasketaan sisällön ja muiden rajoitteiden perusteella
+- background: transparent: Läpinäkyvä tausta
+- border: 0: Poistaa reunaviivan
+- margin: 0: Poistaa ulkomarginaalin
+- letter-spacing: 0: Poistaa lisätyn kirjainvälin
+
+
+## 14. Sivun CSS-rakenne
+
+Tiedoston tärkeimmät luokat on ryhmitelty käyttötarkoituksen mukaan.
+
+- Luokat: Käyttötarkoitus
+- .site-header, .header-inner: Yläpalkki ja sen sisältö
+- .wordmark, .wordmark-mark: Logo tai tunnus
+- .nav-panel, .nav-links, .nav-toggle, .menu-checkbox: Navigaatio ja mobiilivalikko
+- .theme-control: Väriteeman valitsimet
+- .hero, .hero-copy, .hero-visual, .image-note: Etusivun pääosio ja kuva
+- .eyebrow, .section-heading, .section-inner: Osioiden otsikot ja sisällön rajaus
+- .service-list, .service, .service-index: Palvelujen esitys
+- .work-grid, .work-item, .work-caption, .work-year: Töiden esittely
+- .contact-band, .contact-inner: Yhteydenotto-osio
+- footer: Sivun alatunniste
+
+
+## 15. Tärkeimmät havainnot
+
+1. Värimaailma keskitetään :root-muuttujiin, ja light-dark() tuottaa vaalean ja tumman teeman värit.
+2. Ulkoasu on mobiililähtöinen. Leveän näytön muutokset ovat @media (min-width: 768px) -lohkossa.
+3. Flexboxia käytetään erityisesti navigaatiossa ja vaakasuuntaisessa sijoittelussa.
+4. Gridiä käytetään osioiden sarakeasettelussa.
+5. Mobiilivalikon näkyvyyttä ohjataan CSS:n :checked-tilalla.
+6. focus-visible ja prefers-reduced-motion tukevat käytettävyyttä ja saavutettavuutta.
+7. Kommentoidut määritykset, kuten /* font-size: 17px; */, eivät vaikuta sivun ulkoasuun.
+
+
+
+

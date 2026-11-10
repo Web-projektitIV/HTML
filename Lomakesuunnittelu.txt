@@ -1,0 +1,40 @@
+Lomakesuunnittelu
+
+- Selkeä eli hyvin muotoiltu
+- Kysytään (vain) tarvittava
+- Pääasiassa vain pakollisia kenttiä, valinnaiset merkitään 
+  (ennen oli toisinpäin, pakolliset merkittiin tähdellä) 
+- Vain yksi sarake
+- Otsake (label) kentän yläpuolelle
+- Kentän leveys täytettävän sisällön mukaan, esim.:
+  -  Puhelinnumero: maks. 15 merkkiä
+  -  Postinumero: 5 merkkiä
+- Toisaalta vältetään turhaa liehuntaa, esim.
+  -  Sähköpostiosoite yhtä leveäksi kuin katuosoite
+- Sivuston lomakkeet samannäköisiä
+- Attribuuttien käyttö
+  - type
+  - inputmode:
+
+
+	decimal	Numeric only keyboard, usually also a comma key
+	email	Text keyboard, with keys typically for e-mail addresses like [@]
+	none	No keyboard should appear
+	numeric	Numeric only keyboard
+	search	Text keyboard, usually the [enter] key says [go]
+	tel	Numeric only keyboard, usually also with [+], [*], and [#] keys
+	text	Default. Text keyboard
+	url	Text keyboard, with keys typically for web addresses like [.] and [/], 
+		and a special [.com] key, or other domain endings that are typically 
+		for the local settings.
+
+  - placeholder
+  - id (muotoilu ja muu kohdistaminen selaimessa)
+  - name (kentän lähettäminen palvelimelle submit-painikkeesta)
+  - id ja name samaksi kuin kenttänimi tietokannassa
+  - minlength, maxlength, ... 
+  - ... 
+- Validointi
+  - pakolliset => required
+  - selaimen oma virheilmoitus vs. oma virheilmoitus
+ 

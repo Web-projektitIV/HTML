@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html >
+<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#f4f2ed" />
+		<title>Valo Studio | Kokeilu</title>
+		<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+		/>
+		<link rel="stylesheet" href="site.css" />
+		<script src="scripts.js"></script>
+<style>
+label,button {display:block;}
+.invalid-feedback {display:none;}
+input:invalid:not(:focus) {
+border-color: red;    
+}
+
+input:invalid:not(:focus) + .invalid-feedback {
+display:block;
+color: red;
+}
+</style>
+</head>
+<body>
+
+<h2>The input pattern attribute</h2>
+<form novalidate>
+  <label for="etunimi">Etunimi</label>
+  <input type="text" id="etunimi" name="etunimi" pattern="[A-ZÅÄÖa-zåäö]{2,25}" title="first name">
+  <div class="invalid-feedback">Täytä kenttä oikein</div>
+  <button>Lähetä</button>
+</form>
+
+<p><strong>Note:</strong> The pattern attribute of the input tag is not supported in Safari 10 (or earlier).</p>
+
+</body>
+</html>
