@@ -1,0 +1,25 @@
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Apu</title>
+</head>
+<body>
+<form novalidate>
+<label for="valitse-sivu">Valitse sivu</label>
+<select id="valitse-sivu" onchange="if (this.value) window.location.href=this.value;">
+  <option value="">-- Valitse --</option>
+  <option value="https://www.google.fi">Google</option>
+  <option value="https://www.wikipedia.org">Wikipedia</option>
+  <option value="https://www.github.com">GitHub</option>
+</select>
+</form>
+<script>
+  /* Select options are sorted alphabetically by text content keeping the empty option value at the top */  
+  const select = document.getElementById('valitse-sivu');
+  const options = Array.from(select.options).filter(option => option.value !== '');
+  options.sort((a, b) => a.text.localeCompare(b.text, 'fi'));
+  options.forEach(option => select.appendChild(option));
+</script>
+</body>
+</html>
