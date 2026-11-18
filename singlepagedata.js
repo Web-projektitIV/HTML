@@ -1,66 +1,55 @@
 // Shows given section
-const url = "http://localhost:3001/notes"; 
+const url = "http://localhost:3001";
 const quantity = 20;
-const start = 1;
-let counter = 0; 
-
-// When DOM loads, render the first 20 posts
-document.addEventListener('DOMContentLoaded', load);
+const sectionEndpoints = {
+    1: 'notes',
+    2: 'notes_html',
+    3: 'notes_css',
+    4: 'notes_js'
+};
+let activeSection = 'notes';
+let page = 0;
+let loading = false;
+let hasMore = true;
+let requestId = 0;
 
 // When back arrow is clicked, show previous section
 window.onpopstate = function(event) {
-    console.log(event.state.section);
-    showSection(event.state.section);
+    showSection(event.state?.section ?? 'notes');
 }
 
 function showSection(section) {
-    // Find section text from server
-    fetch(url + `/${section}`)
-    .then(response => response.json())
-    .then(data => {
-        // Log text and display on page
-        console.log("showSection: ",data);
-        document.querySelector('#content').innerHTML = data['content'];
-    });
+    activeSection = sectionEndpoints[section] ?? section;
+    page = 0;
+    loading = false;
+    hasMore = true;
+    requestId++;
+    document.querySelector('#content').replaceChildren();
+    load();
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    /*const content = document.querySelector('#content');
-    for (let number = start; number <= start + quantity - 1; number++) {
-        const paragraph = document.createElement('p');
-        paragraph.textContent = number;
-        content.appendChild(paragraph);
-    }*/
-
     // Add button functionality
     document.querySelectorAll('button').forEach(button => {
         button.onclick = function() {
-            const section = this.dataset.section;
+            const section = sectionEndpoints[this.dataset.section];
+            if (!section) return;
             history.pushState({section: section}, "", `?section=${section}`);
             showSection(section);
         };
     });
+
+    const initialSection = new URLSearchParams(location.search).get('section') ?? 'notes';
+    showSection(initialSection);
 });
 
 
-// Event listener for scrolling
-    window.onscroll = () => {
-        const summa = window.innerHeight + window.scrollY;
-        console.log(`window.innerHeight + window.scrollY: ${summa}`);
-        //console.log(`window.scrollY: ${window.scrollY}`);
-        //console.log(`window.innerHeight: ${window.innerHeight}`);
-        console.log('document.body.offsetHeight:',document.body.offsetHeight);
-        // Check if we're at the bottom
-        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-            // Change color to green
-            load();
-            /*document.querySelector('body').style.background = 'green';*/
-        } /*else {
-            // Change color to white
-            document.querySelector('body').style.background = 'white';
-        }*/
-
-    };
+// Load more from the active section when reaching the page bottom.
+window.onscroll = () => {
+    const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 1;
+    document.body.style.background = atBottom ? 'green' : 'white';
+    if (atBottom) load();
+};
 
 function add_content(content) {
     // Create new content element
@@ -72,15 +61,29 @@ function add_content(content) {
     document.querySelector('#content').append(element);
 };    
 
-    // Load next set of posts
-function load() {
-    // Set start and end post numbers, and update counter
-    counter++;
-    // Get new posts and add posts
-    fetch(`${url}?_page=${counter}&_per_page=${quantity}`)
-    .then(response => response.json())
-    .then(data => {
-        console.log("load: ",data.data);
-        data.data.forEach(add_content);
-        });
+// Load the next set of wisdoms from the active section
+async function load() {
+    if (loading || !hasMore) return;
+    loading = true;
+    const requestedSection = activeSection;
+    const requestedPage = page + 1;
+    const currentRequestId = requestId;
+    try {
+        const response = await fetch(`${url}/${requestedSection}?_page=${requestedPage}&_per_page=${quantity}`);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const result = await response.json();
+        if (currentRequestId !== requestId) return;
+
+        result.data.forEach(add_content);
+        page = requestedPage;
+        hasMore = result.next !== null;
+        } 
+    catch (error) {
+        if (currentRequestId === requestId) {
+            console.error(`Could not load ${requestedSection}:`, error);
+        }
+        } 
+    finally {
+        if (currentRequestId === requestId) loading = false;
+    }
     }
